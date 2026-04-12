@@ -1,31 +1,40 @@
-package ba.unsa.etf.rma.rmaquizapp.ui.components
+package ba.unsa.etf.rma.kvizapp.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.MenuAnchorType
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import ba.unsa.etf.rma.kvizapp.data.staticdata.GrupaStaticData
 import ba.unsa.etf.rma.kvizapp.data.staticdata.PredmetStaticData
+import ba.unsa.etf.rma.kvizapp.ui.theme.QuizColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UpisSection() {
 
     val selectedYear = rememberSaveable {
-        mutableStateOf(5)
+        mutableStateOf<Int?>(null)
     }
 
     val selectedSubject = rememberSaveable {
@@ -42,8 +51,10 @@ fun UpisSection() {
 
     val years = listOf(1, 2, 3, 4, 5)
 
-    val subjects = PredmetStaticData
-        .getNeupisaniByGodina(selectedYear.value)
+    val subjects =
+        selectedYear.value?.let {
+            PredmetStaticData.getNeupisaniByGodina(it)
+        } ?: emptyList()
 
     val groups =
         if (selectedSubject.value != null) {
@@ -52,7 +63,15 @@ fun UpisSection() {
             )
         } else emptyList()
 
-    Column {
+    val sviPodaciUneseni =  selectedSubject.value != null &&
+            selectedGroup.value != null && selectedYear.value != null//ako smo odabrali i predmet i grupu onda je dostupno dugne
+
+    Column(
+        modifier=Modifier
+            .fillMaxWidth()
+            .statusBarsPadding()//on automatski prilagodi display takoo da ne smeta status bar-u
+            .padding(horizontal=16.dp,vertical=16.dp)
+    ) {
 
         // GODINA
         ExposedDropdownMenuBox(
@@ -61,12 +80,26 @@ fun UpisSection() {
                 expandedYear.value = !expandedYear.value
             }
         ) {
-            TextField(
-                value = selectedYear.value.toString(),//sadrzi onu vriejdnost koju sadrzi selectedYear
+            OutlinedTextField(
+                value = selectedYear.value?.toString() ?: "Godina studija",//sadrzi onu vriejdnost koju sadrzi selectedYear
                 onValueChange = {},//nije moguce dodirnuti i promijeniti taj TextField READONLY
                 readOnly = true,
+                shape= RoundedCornerShape(14.dp),
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(
+                        expanded = expandedYear.value
+                    )
+                },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = QuizColors.DropdownBorderFocused,
+                    unfocusedBorderColor = Color.Transparent,
+                    focusedTextColor = QuizColors.DropdownText,
+                    unfocusedTextColor = QuizColors.DropdownText,
+                    focusedContainerColor = QuizColors.DropdownBackground,
+                    unfocusedContainerColor = QuizColors.DropdownBackground
+                ),
                 modifier = Modifier
-                    .menuAnchor()
+                    .menuAnchor(MenuAnchorType.PrimaryNotEditable)
                     .fillMaxWidth()
                     .testTag("odabirGodina")
             )
@@ -102,12 +135,26 @@ fun UpisSection() {
                 expandedSubject.value = !expandedSubject.value
             }
         ) {
-            TextField(
+            OutlinedTextField(
                 value = selectedSubject.value ?: "Odaberi predmet",
                 onValueChange = {},
                 readOnly = true,
+                shape= RoundedCornerShape(14.dp),
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(
+                        expanded = expandedSubject.value
+                    )
+                },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = QuizColors.DropdownBorderFocused,
+                    unfocusedBorderColor = Color.Transparent,
+                    focusedTextColor = QuizColors.DropdownText,
+                    unfocusedTextColor = QuizColors.DropdownText,
+                    focusedContainerColor = QuizColors.DropdownBackground,
+                    unfocusedContainerColor = QuizColors.DropdownBackground
+                ),
                 modifier = Modifier
-                    .menuAnchor()
+                    .menuAnchor(MenuAnchorType.PrimaryNotEditable)
                     .fillMaxWidth()
                     .testTag("odabirPredmet")
             )
@@ -140,12 +187,26 @@ fun UpisSection() {
                 expandedGroup.value = !expandedGroup.value
             }
         ) {
-            TextField(
+            OutlinedTextField(
                 value = selectedGroup.value ?: "Odaberi grupu",
                 onValueChange = {},
                 readOnly = true,
+                shape= RoundedCornerShape(14.dp),
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(
+                        expanded = expandedGroup.value
+                    )
+                },
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = QuizColors.DropdownBorderFocused,
+                    unfocusedBorderColor = Color.Transparent,
+                    focusedTextColor = QuizColors.DropdownText,
+                    unfocusedTextColor = QuizColors.DropdownText,
+                    focusedContainerColor = QuizColors.DropdownBackground,
+                    unfocusedContainerColor = QuizColors.DropdownBackground
+                ),
                 modifier = Modifier
-                    .menuAnchor()
+                    .menuAnchor(MenuAnchorType.PrimaryNotEditable)
                     .fillMaxWidth()
                     .testTag("odabirGrupa")
             )
@@ -176,11 +237,24 @@ fun UpisSection() {
                     .first { it.naziv == selectedSubject.value }
 
                 PredmetStaticData.upisiPredmet(predmet)
+
+                // reset samo predmet i grupa
+                selectedSubject.value = null
+                selectedGroup.value = null
             },//na klik se desava upis studenta u PredmetStaticData
-            enabled = selectedSubject.value != null &&
-                    selectedGroup.value != null,//ako smo odabrali i predmet i grupu onda je dostupno dugne
+            enabled = sviPodaciUneseni,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = if (sviPodaciUneseni)
+                    QuizColors.ButtonEnabled
+                else
+                    QuizColors.ButtonDisabled,   // svijetla sivo-plava
+                contentColor = QuizColors.ButtonEnabledTExt,
+                disabledContainerColor = QuizColors.ButtonDisabled,
+                disabledContentColor = QuizColors.ButtonDisabledTExt
+            ),
             modifier = Modifier
                 .fillMaxWidth()
+                .height(55.dp)
                 .testTag("dodajPredmetDugme")
         ) {
             Text("Upiši me")

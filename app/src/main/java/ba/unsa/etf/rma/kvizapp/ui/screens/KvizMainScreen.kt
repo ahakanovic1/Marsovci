@@ -1,7 +1,5 @@
-package ba.unsa.etf.rma.rmaquizapp.ui.screens
+package ba.unsa.etf.rma.kvizapp.ui.screens
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,17 +10,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ba.unsa.etf.rma.rmaquizapp.ui.components.FilterDropdown
-import ba.unsa.etf.rma.rmaquizapp.ui.components.KvizList
-import ba.unsa.etf.rma.rmaquizapp.ui.components.UpisSection
+import ba.unsa.etf.rma.kvizapp.ui.components.SetStatusBarColor
+import ba.unsa.etf.rma.kvizapp.ui.components.FilterDropdown
+import ba.unsa.etf.rma.kvizapp.ui.components.KvizList
+import ba.unsa.etf.rma.kvizapp.ui.components.UpisSection
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun KvizMainScreen() {
 
     val odabraniFilter = rememberSaveable {
         mutableStateOf("Svi kvizovi")
     }
+
+    SetStatusBarColor()
 
     Column(
         modifier = Modifier

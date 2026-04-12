@@ -9,14 +9,14 @@ object PredmetStaticData {
         Predmet("RMA", 3),
 
         // Predmeti na koje korisnik NIJE upisan (min 3)
-        Predmet("IM", 2),
-        Predmet("DM", 1),
+        Predmet("IM", 1),
+        Predmet("DM", 2),
         Predmet("TP", 1),
         Predmet("SP", 2),
         Predmet("ASP", 2),
-        Predmet("RPR", 3),
-        Predmet("VI", 4),
-        Predmet("NRS", 5)
+        Predmet("VI", 3),
+        Predmet("RV", 4),
+        Predmet("UIS", 5)
     )
 
     private val upisaniPredmeti = mutableListOf<Predmet>(

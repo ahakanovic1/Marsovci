@@ -4,27 +4,41 @@ import ba.unsa.etf.rma.kvizapp.data.model.Grupa
 
 object GrupaStaticData {
     private val grupe = listOf<Grupa>(
-        //grupe za predmet RMA
-        Grupa("Grupa 1","RMA"),
-        Grupa("Grupa 2","RMA"),
-        //grupe za IM
-        Grupa("Grupa 3","IM"),
-        Grupa("Grupa 2","IM"),
-        //Grupe za MLTI
-        Grupa("Grupa 4","MLTI"),
-        Grupa("Grupa 1","MLTI"),
-        // Grupe za DM
-        Grupa("Grupa 1", "DM"),
+        // RMA (upisan predmet)
+        Grupa("Grupa 1", "RMA"),
+        Grupa("Grupa 2", "RMA"),
+
+        // IM
+        Grupa("Grupa 3", "IM"),
+        Grupa("Grupa 1", "IM"),
+
+        // DM
         Grupa("Grupa 2", "DM"),
-        // Grupe za SP
-        Grupa("Grupa 1", "SP"),
+        Grupa("Grupa 4", "DM"),
+
+        // TP
+        Grupa("Grupa 1", "TP"),
+        Grupa("Grupa 2", "TP"),
+
+        // SP
+        Grupa("Grupa 5", "SP"),
         Grupa("Grupa 2", "SP"),
-        // ASP grupe
-        Grupa("Grupa 1", "ASP"),
-        Grupa("Grupa 2", "ASP"),
-        // VI grupe
-        Grupa("Grupa 3", "VI"),
-        Grupa("Grupa 4", "VI"),
+
+        // ASP
+        Grupa("Grupa 6", "ASP"),
+        Grupa("Grupa 7", "ASP"),
+
+        // VI
+        Grupa("Grupa 1", "VI"),
+        Grupa("Grupa 2", "VI"),
+
+        // RV
+        Grupa("Grupa 1", "RV"),
+        Grupa("Grupa 2", "RV"),
+
+        // UIS
+        Grupa("Grupa 1", "UIS"),
+        Grupa("Grupa 2", "UIS")
     )
 
     fun getAll() : List<Grupa> = grupe

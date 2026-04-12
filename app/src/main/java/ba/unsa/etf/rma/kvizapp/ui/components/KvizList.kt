@@ -1,4 +1,4 @@
-package ba.unsa.etf.rma.rmaquizapp.ui.components
+package ba.unsa.etf.rma.kvizapp.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import ba.unsa.etf.rma.kvizapp.data.staticdata.KvizStaticData
-import ba.unsa.etf.rma.kvizapp.ui.components.KvizCard
 
 @Composable
 fun KvizList(filter: String) {
