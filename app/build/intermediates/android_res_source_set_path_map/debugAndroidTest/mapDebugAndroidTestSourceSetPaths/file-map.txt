@@ -1,0 +1,4 @@
+ba.unsa.etf.rma.kvizapp.test.app-updated_navigation_xml-0 C:\Users\User\AndroidStudioProjects\KVIZApp\app\build\generated\updated_navigation_xml\debugAndroidTest
+ba.unsa.etf.rma.kvizapp.test.app-packageDebugAndroidTestResources-1 C:\Users\User\AndroidStudioProjects\KVIZApp\app\build\intermediates\incremental\debugAndroidTest\packageDebugAndroidTestResources\merged.dir
+ba.unsa.etf.rma.kvizapp.test.app-packageDebugAndroidTestResources-2 C:\Users\User\AndroidStudioProjects\KVIZApp\app\build\intermediates\incremental\debugAndroidTest\packageDebugAndroidTestResources\stripped.dir
+ba.unsa.etf.rma.kvizapp.test.app-debugAndroidTest-3 C:\Users\User\AndroidStudioProjects\KVIZApp\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
